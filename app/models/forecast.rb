@@ -17,6 +17,7 @@ class Forecast
     address = Geocoder.search(address).first
     cache_key = "weather-#{address.postal_code}/#{address.country_code}"
     cache_exists = Rails.cache.exist?(cache_key)
+
     forecast_obj = Rails.cache.fetch(cache_key, expires_in: CACHE_EXPIRATION) do
       # Retrieve the forecast data from a weather API or other source
       forecast_data = retrieve_forecast_data(address)

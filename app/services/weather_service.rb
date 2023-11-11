@@ -10,7 +10,6 @@ class WeatherService
     def fetch_weather(address)
       @address = address
       response = call_weather_api
-      p "RESPONSE ____ ---- >>>> #{response}"
 
       {
         current_temperature: response['temp'],
