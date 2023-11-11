@@ -1,0 +1,19 @@
+<%# <%= render "shared/flash" %> %>
+
+<h1>Forecast Weather</h1>
+
+<%= form_with(method: 'get', local: true, remote: true) do %>
+    <%= label :address, "What is your address?" %><br>
+    <%= text_field_tag(:address, @address || @address_default, size: 70) %><br>
+    <%= submit_tag("Look up") %>
+<% end %>
+
+<% if defined?(@weather) %>
+    <ul>
+        <li>Temperature: <%= @weather.current_temperature %> ℃</li>
+        <li>Temperature Minimum: <%= @weather.low %> ℃</li>
+        <li>Temperature Maximum: <%= @weather.high %> ℃</li>
+        <li>Temperature Feels like: <%= @weather.extended_forecast %> ℃</li>
+        <li>cache indicator? <%= @weather.from_cache %>
+    </ul>
+<% end %>
